@@ -1,9 +1,5 @@
 package com.lasen.game;
 
-import com.lasen.objects.PlayableObject;
-import com.lasen.objects.RenderManager;
-import com.lasen.objects.ShipBattery;
-import com.lasen.objects.ShipPart;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -19,7 +15,6 @@ import org.newdawn.slick.state.StateBasedGame;
 public class GameplayState extends BasicGameState 
 {
   int stateID = -1;
-  ShipPart test;
     
   GameplayState( int StateID)
   {
@@ -35,8 +30,8 @@ public class GameplayState extends BasicGameState
     @Override
   public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
   {
-      Game.player = new PlayableObject("res/player.png");
-      Game.renderManager = new RenderManager( Game.getPlayer() );
+
+
   }
 
     @Override
@@ -85,16 +80,6 @@ public class GameplayState extends BasicGameState
     g.drawString( "Y: " + playerStringY, 10f, 80f);
     g.drawString( "Acc: " + playerStringA, 10f, 100f);
     g.drawString( "Fct: " + playerStringF, 10f, 120f);   
-  }
-  
-  private boolean objectOnScreen( float x, float y )
-  {
-  
-    if( x < 0 || x > Game.getWindowWidth() || y<0 || y>Game.getWindowHeight() )
-    {
-      return false;
-    } else { return true; }
-    
   }
   
 }

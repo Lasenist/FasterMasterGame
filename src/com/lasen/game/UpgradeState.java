@@ -4,9 +4,7 @@
  */
 package com.lasen.game;
 
-import com.lasen.objects.Pointer;
-import com.lasen.objects.ShipBattery;
-import com.lasen.objects.ShipPart;
+import com.lasen.objects.*;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -40,6 +38,9 @@ public class UpgradeState extends BasicGameState
   @Override
   public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
   {
+    Game.player = new PlayableObject();
+    Game.renderManager = new RenderManager( Game.getPlayer() );
+
     test = new ShipBattery("Test",0,1,"res/player.png",0, 100, 100 , 2);
     parts[0] = test;
     compass = new Pointer(Game.getPlayer(), parts);    
@@ -48,7 +49,7 @@ public class UpgradeState extends BasicGameState
   @Override
   public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException 
   {
-    grphcs.drawImage( Game.getPlayer(), Game.getPlayer().getX(), Game.getPlayer().getY() );
+    Game.getPlayer().draw();
     getDebug(grphcs, gc);    
     test.draw();
     compass.draw();

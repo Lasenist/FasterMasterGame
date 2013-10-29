@@ -8,12 +8,12 @@ import org.newdawn.slick.geom.Rectangle;
  *
  * @author Lasen
  */
-public class PlayableObject extends Image
+public class PlayableObject
 {
   ShipPart[] children;
   
-  private float x = 600f;
-  private float y = 400f;
+  private float x;
+  private float y;
   
   private float xVelocity = 0f;
   private float yVelocity = 0f;
@@ -21,9 +21,9 @@ public class PlayableObject extends Image
   private float acceleration = 2f;
   private float friction = 50f;        
  
-  public PlayableObject(String ref) throws SlickException
+  public PlayableObject()
   {
-    super(ref);       
+
   }
   
   public float getX() { return x; }  
@@ -59,49 +59,47 @@ public class PlayableObject extends Image
     tempY = String.format("%.0f", yVelocity -( yVelocity * DELTA_DIV_ONEHUNDRED ) );
     
  //UPDATES X AND Y   
-    x = -Float.parseFloat( tempX ) + 640;
-    y = -Float.parseFloat( tempY ) + 400;   
+    this.x = -Float.parseFloat( tempX ) + 640;
+    this.y = -Float.parseFloat( tempY ) + 400;
   }
   
   public float processRotation(Boolean qPressed, Boolean ePressed, int delta) 
-  {   
-    
-    //REWRITE THIS IN YOUR NEXT HEARTBEAT
-    
-    if( friction !=0 )
-    {
-      if( qPressed ){ return -( 0.5f ); }
-      if( ePressed ){ return ( 0.5f ); }
-      if( !qPressed && !ePressed){ return 0f; }
-    } else if( friction == 0)
-    {
-      if( qPressed ){ return -0.1f; }
-      if( ePressed ){ return 0.1f; }
-      if( !qPressed && !ePressed){ return 0f; }
-    }
-    
+  {
     return 0f;
+  }
+
+  public Image getImage()
+  {
+      Image player = null;
+      try
+      {
+          player = new Image("res/player.png");
+      } catch (SlickException e)
+        {
+          e.printStackTrace();
+        }
+
+      return player;
+
   }
   
   public Rectangle getBoundingBox()
   {
-    Rectangle boundingBox = new Rectangle( getX(),getY(), 32, 32 );
-    return boundingBox;
+
+    return new Rectangle( getX(),getY(), 32, 32 );
   }
   
-  @Override
-  public void draw(float x,float y)
+
+  public void draw()
   {
-    this.x = x;
-    this.y= y;
-    super.draw(x, y);    
+    getImage().draw( this.getX(), this.getY() );
   }
-  
-  @Override
-  public Image getSubImage(int x, int y, int width, int height)
+
+  public void rotate(float angle)
   {
-    return super.getSubImage(x, y, width, height);
+    getImage().rotate(angle);
   }
+
 
 
   

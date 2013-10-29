@@ -15,7 +15,6 @@ public class Game extends StateBasedGame
     public static final int MAIN_MENU_STATE  = 0;
     public static final int GAMEPLAY_STATE   = 1;
     public static final int UPGRADE_STATE = 2;
-    public static final int ACTION_STATE = 3;
 
     public static PlayableObject player;
     public static RenderManager renderManager;
@@ -46,7 +45,6 @@ public class Game extends StateBasedGame
         this.addState(new MainMenuState(MAIN_MENU_STATE));
         this.addState(new GameplayState(GAMEPLAY_STATE));
         this.addState(new UpgradeState(UPGRADE_STATE));
-//        this.addState(new ActionState(ACTION_STATE));
     }
     
     public static PlayableObject getPlayer()
