@@ -4,7 +4,7 @@
  */
 package com.lasen.objects;
 
-import java.util.ArrayList;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -37,27 +37,25 @@ public class Pointer
     pointToNearestShipPart();
   }
   
-  public void draw() throws SlickException
+  public void draw(Graphics g) throws SlickException
   {
     Image image = new Image("res/shipCompass.png");
     image.setCenterOfRotation(5, 11);
     image.setRotation(rotation);
-    image.draw(x, y);
+    g.drawImage(image, x, y);
   }
   
   private void pointToNearestShipPart()
   {
     if( parts != null)
     {
-    ShipPart closest = parts[0];    
-    
-      closest = (ShipPart) parts[0]; 
+    ShipPart closest = parts[0];
       
       for( int i = 1; i<1 ;i++ ) 
       {
         if( closest.getY() > parts[i].getY() &&  player.getY() < closest.getY() )
         {
-          closest = (ShipPart) parts[i];
+          closest = parts[i];
         }  
       }  
     

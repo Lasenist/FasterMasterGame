@@ -1,6 +1,6 @@
 package com.lasen.objects;
 
-import org.newdawn.slick.Image;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -11,12 +11,15 @@ public class RenderManager
 {
  
   private PlayableObject player;
-  private float playerXVelocity;
-  private float playerYVelocity;
+  private int width;
+  private int height;
+
   
-  public RenderManager(PlayableObject player)
+  public RenderManager(PlayableObject player, int width, int height)
   {
     this.player = player;
+    this.width = width;
+    this.height = height;
   }
   
   public void getRelativeVelocity(ShipPart shipPart, float xVelocity, float yVelocity, int delta)
@@ -37,14 +40,24 @@ public class RenderManager
     shipPart.setY( shipPart.getY() - relativeYVelocity );
     shipPart.setX( shipPart.getX() + relativeXVelocity );
     
-    
   }
   
   
-  public void renderShipPart(ShipPart shipPart, float x, float y) throws SlickException
-  {        
-    shipPart.getImage().draw(x, y);
+  public void renderShipPart(ShipPart shipPart, float x, float y, Graphics g) throws SlickException
+  {
+    if( insideWindow(x,y) )
+    {
+     g.drawImage(shipPart.getImage(), x, y );
+    }
     shipPart.setY(y);
+  }
+
+  private boolean insideWindow(float x, float y)
+  {
+    if( (x < width && x > 0)  ||  ( y < height && y > 0 ) )
+    {
+      return true;
+    } else return false;
   }
   
   

@@ -1,5 +1,6 @@
 package com.lasen.objects;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
@@ -21,10 +22,7 @@ public class PlayableObject
   private float acceleration = 2f;
   private float friction = 50f;        
  
-  public PlayableObject()
-  {
-
-  }
+  public PlayableObject() {}
   
   public float getX() { return x; }  
   public float getY() { return y; }
@@ -90,9 +88,9 @@ public class PlayableObject
   }
   
 
-  public void draw()
+  public void draw(Graphics g)
   {
-    getImage().draw( this.getX(), this.getY() );
+    g.drawImage(getImage(), this.getX(), this.getY() );
   }
 
   public void rotate(float angle)

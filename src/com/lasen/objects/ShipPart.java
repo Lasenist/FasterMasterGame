@@ -1,6 +1,7 @@
 package com.lasen.objects;
 
 import com.lasen.game.Game;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
@@ -79,9 +80,9 @@ abstract public class ShipPart
     setY(  getY() + getYVelocity() );
   }
   
-  public void draw() throws SlickException
+  public void draw(Graphics g) throws SlickException
   {    
-    Game.getRenderManager().renderShipPart( this , getX(), getY() + getYVelocity() );  
+    Game.getRenderManager().renderShipPart( this , getX(), getY() + getYVelocity(), g );
   }
   
   public Image getImage() throws SlickException

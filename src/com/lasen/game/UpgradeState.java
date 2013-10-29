@@ -39,7 +39,7 @@ public class UpgradeState extends BasicGameState
   public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
   {
     Game.player = new PlayableObject();
-    Game.renderManager = new RenderManager( Game.getPlayer() );
+    Game.renderManager = new RenderManager( Game.getPlayer(), Game.getWindowWidth(), Game.getWindowHeight() );
 
     test = new ShipBattery("Test",0,1,"res/player.png",0, 100, 100 , 2);
     parts[0] = test;
@@ -47,12 +47,13 @@ public class UpgradeState extends BasicGameState
   }
 
   @Override
-  public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException 
+  public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
   {
-    Game.getPlayer().draw();
-    getDebug(grphcs, gc);    
-    test.draw();
-    compass.draw();
+    g.setAntiAlias(true);
+    Game.getPlayer().draw(g);
+    getDebug(g, gc);
+    test.draw(g);
+    compass.draw(g);
   }
 
   @Override
