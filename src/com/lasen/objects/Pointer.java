@@ -39,8 +39,8 @@ public class Pointer
   
   public void draw(Graphics g) throws SlickException
   {
-    Image image = new Image("res/shipCompass.png");
-    image.setCenterOfRotation(5, 11);
+    Image image = new Image("res/shipCompass.png");   //Place this at the top of the screen
+    image.setCenterOfRotation(5, 11);                 //Not the center of the ship
     image.setRotation(rotation);
     g.drawImage(image, x, y);
   }
