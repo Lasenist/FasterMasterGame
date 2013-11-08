@@ -48,11 +48,10 @@ public class UpgradeState extends BasicGameState
 
   @Override
   public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
-  {
-    g.setAntiAlias(true);
-    Game.getPlayer().draw(g);
-    getDebug(g, gc);
-    test.draw(g);
+  {                                     
+    Game.getPlayer().draw(g);            
+    getDebug(g, gc);              // Place reset transform and render other object afterwards. See:
+    test.draw(g);                 // http://stackoverflow.com/questions/8567794/zooming-in-slick2d
     compass.draw(g);
   }
 
