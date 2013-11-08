@@ -48,7 +48,7 @@ public class PlayableObject
  
 //KEEP PLAYER ON THE SCREEN
     if(xVelocity > 200){ xVelocity = xVelocity - acceleration * DELTA_DIV_ONEHUNDRED; }
-    if(xVelocity < -200){ xVelocity = xVelocity + acceleration * DELTA_DIV_ONEHUNDRED; }
+    if(xVelocity < -200){ xVelocity = xVelocity + acceleration * DELTA_DIV_ONEHUNDRED; }  //Use ln(x) x10 to convert engine power to terminal velocity?
     if(yVelocity > 200){ yVelocity = yVelocity - acceleration * DELTA_DIV_ONEHUNDRED; }
     if(yVelocity < -200){ yVelocity = yVelocity + acceleration * DELTA_DIV_ONEHUNDRED; }
     
