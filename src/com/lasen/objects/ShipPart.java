@@ -19,7 +19,7 @@ abstract public class ShipPart
   private float yVelocity;
   
   
-  ShipPart[] parents = null;
+  ShipPart parents = null;
   ShipPart[] children = null;
   
   String name;
